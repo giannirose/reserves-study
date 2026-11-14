@@ -6,11 +6,17 @@ A client-side web application for preparing and reviewing homeowner association 
 
 Features
 Categorized Components — all funded components grouped by category, with unfunded components listed separately at the end
+
 Current Cost — component replacement costs inflated from the study planning year to the present
+
 Expenditures — projected replacement costs by component and decade
+
 Fully Funded — annual fully funded balance targets by component
+
 Cash Flow — 30-year projection of reserves, contributions, expenditures and interest
+
 Method Notes — explanation of calculations and assumptions
+
 PDF Report — all pages assembled into a print-ready landscape PDF with page numbers and association name in the footer
 Per-Component Inflation Rate
 
