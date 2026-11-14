@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Study</title>
+  <link rel="shortcut icon" href="#">
+  <link href="./css/upload.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header class="site-header">
+    <h1>Reserve Study</h1>
+    <p>Enter the association's settings, components and any forced contribution or interest years in one workbook,
+      upload it, and see the full study.</p>
+  </header>
+
+  <main>
+    <section class="steps" aria-labelledby="stepsHeading">
+      <h2 id="stepsHeading">How it works</h2>
+      <ol>
+        <li><a href="templates/Reserve_Study_Template.xlsx" download>Download the blank study workbook</a>,
+          or start from the <a href="templates/Reserve_Study_Example_Filled.xlsx" download>filled-in example</a>.</li>
+        <li>Fill in the Settings, Components, Dues Contribution and Force Interest tabs. The Instructions tab
+          explains each one and gives typical values. The last two tabs—Dues Contribution and Force Interest—are
+          optional.</li>
+        <li>Upload the workbook here.</li>
+      </ol>
+    </section>
+
+    <section id="dropZone" class="drop-zone" aria-label="Upload workbook">
+      <p class="drop-title">Drop your workbook here</p>
+      <div class="drop-actions">
+        <label class="button">Choose file
+          <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+        </label>
+        <button type="button" id="exampleBtn" class="button secondary">Use the filled-in example</button>
+      </div>
+      <p id="fileName" class="file-name" aria-live="polite"></p>
+    </section>
+
+    <section id="messages" aria-live="polite" hidden></section>
+
+    <section id="results" hidden>
+      <div id="studySummary" class="study-summary"></div>
+
+      <div class="actions">
+        <button type="button" id="pdfBtn" class="button">Print / Save as PDF</button>
+        <button type="button" id="excelBtn" class="button">Download Excel workbook</button>
+        <span id="actionStatus" class="status" aria-live="polite"></span>
+      </div>
+      <p id="jsonLinks" class="json-links"></p>
+
+      <div class="tab-bar">
+        <nav id="tabs" class="tabs" role="tablist" aria-label="Study pages"></nav>
+        <a id="openTab" class="open-tab" target="_blank" rel="noopener">Open this page in a new tab</a>
+      </div>
+      <div id="frames" class="frames"></div>
+    </section>
+  </main>
+
+  <!-- SheetJS reads the uploaded workbook and writes the Excel download -->
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="js/convertStudyWorkbook.js"></script>
+  <script src="js/upload.js"></script>
+</body>
+
+</html>
