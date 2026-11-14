@@ -1,0 +1,283 @@
+/* Upload page only. The study pages keep using style.css. */
+:root {
+  --navy: #2b4b6f;
+  --navy-dark: #1f3a57;
+  --grey: #606060;
+  --line: #d9dde2;
+  --soft: #f4f6f8;
+  --text: #1d232b;
+  --muted: #5a6370;
+  --error: #b00020;
+  --error-bg: #fdecef;
+  --notice-bg: #eef4fb;
+  --warn-bg: #fff7e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.5;
+}
+
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 1.5rem 16px;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  max-width: 1500px;
+}
+
+.site-header h1 {
+  margin: 0 0 .25rem;
+  font-size: 1.25rem;
+}
+
+.site-header p {
+  margin: 0;
+  max-width: 70ch;
+  opacity: .9;
+}
+
+main {
+  padding: 1.25rem 16px 3rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0 0 .5rem;
+}
+
+.steps ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.steps li {
+  margin-bottom: .25rem;
+}
+
+.steps a {
+  color: var(--navy);
+}
+
+.drop-zone {
+  margin: 1.25rem 0;
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background: var(--soft);
+  transition: border-color .15s, background .15s;
+}
+
+.drop-zone.dragging {
+  border-color: var(--navy);
+  background: var(--notice-bg);
+}
+
+.drop-title {
+  margin: 0 0 .75rem;
+  font-weight: 600;
+}
+
+.drop-actions {
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.file-name {
+  margin: .75rem 0 0;
+  color: var(--muted);
+  min-height: 1.5em;
+}
+
+.button {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  border: 1px solid var(--navy);
+  border-radius: 4px;
+  padding: .5rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--navy-dark);
+}
+
+.button.secondary {
+  background: #fff;
+  color: var(--navy);
+}
+
+.button.secondary:hover {
+  background: var(--notice-bg);
+}
+
+.button:disabled {
+  opacity: .6;
+  cursor: progress;
+}
+
+.button:focus-visible,
+.tabs button:focus-visible {
+  outline: 3px solid #8fb3db;
+  outline-offset: 2px;
+}
+
+.message {
+  border-radius: 6px;
+  padding: .75rem 1rem;
+  margin-bottom: .75rem;
+}
+
+.message h3 {
+  margin: 0 0 .25rem;
+  font-size: 1rem;
+}
+
+.message ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.message.error {
+  background: var(--error-bg);
+  border-left: 4px solid var(--error);
+}
+
+.message.warning {
+  background: var(--warn-bg);
+  border-left: 4px solid #c99700;
+}
+
+.message.notice {
+  background: var(--notice-bg);
+  border-left: 4px solid var(--navy);
+}
+
+.study-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.study-summary .item {
+  background: var(--soft);
+  border-radius: 6px;
+  padding: .5rem .75rem;
+}
+
+.study-summary .label {
+  display: block;
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.study-summary .value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.status {
+  color: var(--muted);
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: .5rem;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--grey);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.tabs button {
+  font: inherit;
+  border: 1px solid var(--line);
+  border-bottom: none;
+  background: var(--soft);
+  color: var(--text);
+  padding: .45rem .9rem;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+}
+
+.tabs button[aria-selected="true"] {
+  background: var(--grey);
+  border-color: var(--grey);
+  color: #fff;
+}
+
+.open-tab {
+  font-size: .9rem;
+  color: var(--navy);
+  padding-bottom: .4rem;
+}
+
+.frames {
+  border: 1px solid var(--line);
+  border-top: none;
+}
+
+.page-frame {
+  display: block;
+  width: 100%;
+  min-height: 600px;
+  border: 0;
+  background: #fff;
+}
+
+.page-frame[hidden] {
+  display: none;
+}
+
+/* Off-screen frame used only to print the combined report */
+.print-frame {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 0;
+}
+
+.json-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  margin: -.25rem 0 1rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.json-links a {
+  color: var(--navy);
+}
