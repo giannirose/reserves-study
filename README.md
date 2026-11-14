@@ -1,4 +1,9 @@
 # reserves-study
+
+## Download
+
+Download the latest release as a zip from the [Releases page](../../releases).
+
 Files to create a reserves study- an overview of anticipated and scheduled expenses
 Reserve Study
 
