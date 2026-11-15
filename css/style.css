@@ -48,6 +48,16 @@ thead {
 .totals-row {
   font-weight: bold;
   border-top: 2px solid #333;
+  background: var(--darkGrey);
+  color: var(--myWhite);
+}
+
+.category-subtotal-row th,
+.category-subtotal-row td {
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  font-style: italic;
+  background: var(--lightGrey);
 }
 
 #totalRow {
@@ -142,13 +152,6 @@ td:nth-child(1) {
   border-radius: 4px;
   margin-right: 0.5rem;
   cursor: pointer;
-}
-
-.category-subtotal-row th,
-.category-subtotal-row td {
-  font-weight: bold;
-  border-top: 1px solid #ccc;
-  font-style: italic;
 }
 
 @media print {
