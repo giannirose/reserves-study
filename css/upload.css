@@ -223,17 +223,17 @@ h2 {
   font: inherit;
   border: 1px solid var(--line);
   border-bottom: none;
-  background: var(--soft);
-  color: var(--text);
+  background: var(--navy);
+  color: var(--soft);
   padding: .45rem .9rem;
   border-radius: 6px 6px 0 0;
   cursor: pointer;
 }
 
 .tabs button[aria-selected="true"] {
-  background: var(--grey);
-  border-color: var(--grey);
-  color: #fff;
+  background: var(--line);
+  border-color: var(--navy-dark);
+  color: var(--navy-dark);
 }
 
 .open-tab {
