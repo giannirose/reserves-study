@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fully Funded</title>
+  <link rel="shortcut icon" href="#">
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+  <!-- Answers settings.json/components.json requests from an uploaded workbook, when there is one -->
+  <script src="./js/studyData.js"></script>
+</head>
+
+<body class="fully-funded">
+  <header>
+    <h1 id="pageHeading">Fully Funded</h1>
+  </header>
+
+  <div class="export-buttons">
+    <button id="exportCsvBtn">Export CSV</button>
+    <button id="exportExcelBtn">Export Excel</button>
+  </div>
+
+
+  <div id="fullyFundedTables">
+    <!-- One <table class="decade-table"> per 10-year decade is added here by
+       fullyFunded.js, via decadeTables.js. -->
+  </div>
+
+  <script src="./js/reserves-engine.js" defer></script>
+  <script src="./js/decadeTables.js" defer></script>
+  <script src="./js/fullyFunded.js" defer></script>
+  <script src="./js/exportUtils.js"></script>
+
+  <script>
+    document.getElementById("exportExcelBtn").addEventListener("click", () =>
+      exportExcel({
+        filename: "Fully Funded.xls", sheetName: "FullyFunded",
+        title: "Fully Funded Balance by Component"
+      })
+    );
+    document.getElementById("exportCsvBtn").addEventListener("click", () =>
+      exportCSV({
+        filename: "Fully Funded.csv",
+        title: "Fully Funded Balance by Component"
+      })
+    );
+  </script>
+
+</body>
+
+</html>

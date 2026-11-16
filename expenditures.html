@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expenditures</title>
+  <link rel="shortcut icon" href="#">
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+  <!-- Answers settings.json/components.json requests from an uploaded workbook, when there is one -->
+  <script defer src="./js/studyData.js"></script>
+</head>
+
+<body class="expenditures">
+  <header>
+    <h1 id="pageHeading">Expenditures</h1>
+  </header>
+
+  <div class="export-buttons">
+    <button id="exportCsvBtn">Export CSV</button>
+    <button id="exportExcelBtn">Export Excel</button>
+  </div>
+
+  <div id="expendituresTables">
+    <!-- One <table class="decade-table"> per 10-year decade is added here by
+       expenditures.js, via decadeTables.js. -->
+  </div>
+  <script defer src="./js/reserves-engine.js"></script>
+  <script defer src="./js/decadeTables.js"></script>
+  <script defer src="./js/expenditures.js"></script>
+  <script defer src="./js/exportUtils.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("exportExcelBtn").addEventListener("click", () =>
+        exportExcel({
+          filename: "Expenditures.xls", sheetName: "Expenditures",
+          title: "Expenditures Balance by Component"
+        })
+      );
+      document.getElementById("exportCsvBtn").addEventListener("click", () =>
+        exportCSV({
+          filename: "Expenditures.csv",
+          title: "Expenditures Balance by Component"
+        })
+      );
+    });
+  </script>
+  <script>
+    document.getElementById("exportExcelBtn").addEventListener("click", () =>
+      exportExcel({
+        filename: "Expenditures.xls", sheetName: "Expenditures",
+        title: "Expepnditures Balance by Component"
+      })
+    );
+    document.getElementById("exportCsvBtn").addEventListener("click", () =>
+      exportCSV({
+        filename: "Expenditures.csv",
+        title: "Expenditures Balance by Component"
+      })
+    );
+
+  </script>
+</body>
+
+</html>

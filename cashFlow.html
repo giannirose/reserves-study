@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cash Flow</title>
+  <link rel="shortcut icon" href="#">
+  <!-- <link href="print.css" rel="stylesheet" type="text/css"> -->
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+
+  <!-- Answers settings.json/components.json requests from an uploaded workbook, when there is one -->
+  <script src="js/studyData.js"></script>
+</head>
+
+<body class="cash-flow">
+  <header>
+    <h1 id="pageHeading">Cash Flow</h1>
+  </header>
+
+  <div class="export-buttons">
+    <button id="exportCsvBtn">Export CSV</button>
+    <button id="exportExcelBtn">Export Excel</button>
+  </div>
+
+  <table id="componentsTable">
+    <caption>30-Year Cash Flow Projection</caption>
+    <thead>
+      <tr id="headerRow">
+        <th scope="col">Year</th>
+        <th scope="col">Current Cost</th>
+        <th scope="col">Fully Funded</th>
+        <th scope="col">Annual Contribution</th>
+        <th scope="col">Annual Expenditure</th>
+        <th scope="col">Annual Interest</th>
+        <th scope="col">Projected Ending Reserves</th>
+        <th scope="col">Percent Funded</th>
+        <th scope="col">Contribution % Change</th>
+        <th scope="col">Forced Annual Contribution</th>
+        <th scope="col">Forced Annual Interest</th>
+      </tr>
+    </thead>
+    <tbody id="cashFlowBody">
+      <tr>
+        <td colspan="11">Loading cash flow data&hellip;</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Pure calculation logic, no DOM access -->
+  <h2 class="h1 page-break">Method Notes</h2>
+  <main class="methodology-notes">
+    <p>
+      This reserve study generally follows the component-based reserve study framework
+      established by national industry guidance — commonly referenced as CAI (Community
+      Associations Institute) and APRA (Association of Professional Reserve Analysts)
+      standards. In practical terms, that means: identifying major shared components,
+      estimating their replacement cost and expected life, projecting when each will need
+      replacement, and comparing the association's reserve fund to a "Fully Funded Balance"
+      benchmark — the reserve level the component method calls for at any given point.
+    </p>
+
+    <p>
+      A few deliberate variations from strict industry-standard methodology are used in
+      this study, chosen to better fit this association's practical funding priorities.
+      Each is explained below so the reasoning is clear to anyone reviewing this study.
+    </p>
+
+    <h2>Where This Study Intentionally Varies</h2>
+
+    <h3>The contribution amount is set directly, not solved for</h3>
+    <p>
+      The annual contribution shown throughout this study is set as a planning assumption
+      (with a planned annual increase), rather than mathematically calculated to hit a
+      specific funding target. The "Percent Funded" figure reported each year is a
+      diagnostic measurement — how the chosen contribution compares to the standard
+      fully-funded benchmark — not an automatically self-correcting number. Adjusting the
+      contribution to change that trajectory is a decision for the association's board.
+    </p>
+
+    <h3>Funding for long-lived components is deferred until it's relevant</h3>
+    <p>
+      This study covers a <span class="study-length-value">30</span>-year planning horizon.
+      Under strict component-method accounting, a component with a longer expected life —
+      say, 50 years — would begin accruing funding from the day it's installed, even though
+      its replacement is decades away. This study instead defers funding for such
+      components until their replacement falls within the same
+      <span class="study-length-value">30</span>-year horizon used for every other
+      component. This avoids asking current contributions to carry the weight of
+      far-future replacements while nearer-term components compete for the same dollars.
+    </p>
+
+    <h3>Inflation rate — global default with optional per-component override</h3>
+
+    <p>Each component’s current replacement cost is entered in today’s dollars and compounded forward at an annual
+      inflation rate to the year replacement is expected — so a component scheduled ten years out is shown at its
+      estimated cost in that future year, not at today’s price.</p>
+
+    <p>A global inflation rate is set in Settings and applied to all components by default. Where real-world cost
+      escalation for a specific component is known to differ materially from the general rate — construction costs,
+      roofing, and paving are common examples — an individual inflation rate can be entered in the Components tab for
+      that component. When a per-component rate is set, it overrides the global rate for that component’s cost
+      projections throughout the study: current cost, expenditures, and fully funded balance. Components without a
+      per-component rate continue to use the global rate.</p>
+
+    <h3>Interest earned is an estimate, not a guarantee</h3>
+    <p>
+      Annual interest is estimated using an average-balance approximation. Rather than
+      applying the assumed <span class="interest-rate-value">2.0</span>% rate to the
+      opening balance alone, this study applies it to a balance adjusted for the
+      contributions and expenditures expected to occur during the year — specifically,
+      the opening balance plus half the year's net inflows — on the premise that cash
+      movements happen throughout the year rather than all at once. This produces a
+      modestly more conservative interest estimate in years with large expenditures, and
+      a modestly higher estimate in years with strong contributions.
+    </p>
+    <p>
+      The simpler and perhaps more common approach applies the interest rate to the
+      opening balance only and treats contributions and expenditures as occurring at
+      year-end. That method is slightly easier to audit against a single balance figure,
+      but it does not reflect the practical reality that reserves earn interest on a
+      balance that is changing throughout the year. The difference between the two
+      methods is generally small; it becomes more noticeable in years with unusually
+      large expenditures scheduled early in the year.
+    </p>
+    <p>
+      Regardless of method, actual interest earned will depend on real account activity,
+      prevailing rates, and the timing of actual cash movements, and should be reviewed
+      periodically against actual statements.
+    </p>
+
+    <h3>Special assessments and loans are not automatically modeled</h3>
+    <p>
+      This study tracks whether the association's governing documents permit special
+      assessments or loans, but does not automatically incorporate either into the
+      projected cash flow. If a projected shortfall appears in this study, it is a signal
+      for the board to evaluate available options directly — including, but not limited
+      to, a special assessment, a loan, or an adjustment to the regular contribution.
+    </p>
+
+    <h2>Questions or Further Review</h2>
+    <p>
+      This study is intended as a practical planning tool for the association's board.
+      For decisions with binding legal or financial consequences, the board should consult
+      a professional reserve specialist or financial advisor familiar with this
+      association's specific circumstances.
+    </p>
+  </main>
+
+
+
+  <!-- Page-specific rendering logic, runs after engine is loaded -->
+  <script src="js/reserves-engine.js"></script>
+  <script src="js/cashFlow.js"></script>
+  <script src="js/exportUtils.js"></script>
+  <script>
+    document.getElementById("exportCsvBtn").addEventListener("click", () =>
+      exportCSV({ tableId: "componentsTable", filename: "cash_flow.csv" })
+    );
+    document.getElementById("exportExcelBtn").addEventListener("click", () =>
+      exportExcel({ tableId: "componentsTable", filename: "cash_flow.xls", sheetName: "CashFlow" })
+    );
+  </script>
+</body>
+
+</html>

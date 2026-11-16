@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorized Components</title>
+  <link rel="shortcut icon" href="#">
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+  <!-- Answers settings.json/components.json requests from an uploaded workbook, when there is one -->
+  <script src="./js/studyData.js"></script>
+</head>
+
+<body class="categorized-components">
+  <header>
+    <h1 id="pageHeading">Categorized Components</h1>
+  </header>
+
+  <div class="export-buttons">
+    <button id="exportCsvBtn">Export CSV</button>
+    <button id="exportExcelBtn">Export Excel</button>
+  </div>
+
+  <table id="componentsTable">
+    <caption>Reserve Components by Category</caption>
+    <thead>
+      <tr id="headerRow">
+        <th scope="col">Name</th>
+        <th scope="col">Item Type</th>
+        <th scope="col">Date in Service</th>
+        <th scope="col">Date in Service Cost</th>
+        <th scope="col">Useful Life</th>
+        <th scope="col">Adjustment</th>
+        <th scope="col">Remaining Life</th>
+        <th scope="col">Replacement Year</th>
+        <th scope="col">Scope Factor (Qualifier)</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit Cost</th>
+        <th scope="col">Current Cost</th>
+        <th scope="col">Inflation Rate</th>
+      </tr>
+    </thead>
+    <tbody id="categorizedComponentsBody">
+      <tr>
+        <td colspan="13">Loading component data&hellip;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pure calculation logic, no DOM access -->
+  <script src="./js/reserves-engine.js" defer></script>
+  <!-- Page-specific rendering logic, runs after engine is loaded -->
+  <script type="module" src="./js/categorizedComponents.js" defer></script>
+  <script src="./js/exportUtils.js"></script>
+  <script>
+    document.getElementById("exportCsvBtn").addEventListener("click", () =>
+      exportCSV({ tableId: "componentsTable", filename: "Categorized Components.csv" })
+    );
+    document.getElementById("exportExcelBtn").addEventListener("click", () =>
+      exportExcel({ tableId: "componentsTable", filename: "Categorized Components.xls", sheetName: "CategorizedComponents" })
+    );
+  </script>
+</body>
+
+</html>
