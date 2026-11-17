@@ -6,28 +6,27 @@
      content: "Page " counter(page) " of " counter(pages);
      font-family: Georgia, "Times New Roman", serif;
      font-size: 7.5pt;
-     color: var(--darkerGrey);
+     color: var(--darkDarkGrey);
    }
 
    @bottom-left {
      content: "Reserve Study";
      font-family: Georgia, "Times New Roman", serif;
      font-size: 7.5pt;
-     color: var(--darkerGrey);
+     color: var(--darkDarkGrey);
    }
  }
 
  :root {
-   --lightGrey: #E8E8E8;
-   --darkGrey: #606060;
-   --darkerGrey: #333;
-   --myBlack: #020202;
-   --lightGreen: #E4FFE4;
    --myWhite: #f2f2f2;
+   --veryLightGrey: #F5F5F5;
+   --lightGrey: #E8E8E8;
+   --medGrey: #A0A0A0;
+   --darkGrey: #606060;
+   --darkDarkGrey: #404040;
+   --myBlack: #020202;
    --totalsRow: #e0e0e0;
    --subtotalRowBg: #E4E4E4;
-   --scheduledCellColor: #f0f0f0;
-   --scheduledCellBg: #606060;
    --red: #b00020;
  }
 
@@ -68,14 +67,10 @@
    text-align: center;
  }
 
- /* Scheduled cells become white on black */
+ /* Scheduled cells */
  .scheduled-cell {
-   background-color: var(--lightGrey);
-   color: var(--myBlack);
- }
-
- .ff-cell-color {
-   background-color: var(--lightGreen);
+   background-color: var(--darkDarkGrey);
+   color: var(--myWhite);
  }
 
  /* Keep category heading rows grey regardless of stripe */
@@ -87,8 +82,6 @@
    color: var(--red);
    font-weight: bold;
  }
-
-
 
  .baseline-row {
    font-style: italic;
@@ -134,7 +127,6 @@
    break-after: avoid;
  }
 
-
  h3 {
    font-size: 10pt;
  }
@@ -144,7 +136,6 @@
    font-size: 9pt;
    margin-bottom: 4pt;
  }
-
 
  tr {
    height: auto;
@@ -179,10 +170,8 @@
  .report-cover .fine {
    margin-top: 14pt;
    font-size: 8.5pt;
-   color: var(--darkerGrey);
+   color: var(--darkDarkGrey);
  }
-
-
 
  /* Zebra stripe data rows */
  tbody tr:nth-child(even) {
@@ -194,7 +183,7 @@
  .totals-row td {
    background-color: var(--myBlack);
    font-weight: bold;
-   border-top: 2px solid var(--darkerGrey);
+   border-top: 2px solid var(--darkDarkGrey);
    color: var(--myWhite);
  }
 
