@@ -42,8 +42,8 @@ td {
 }
 
 thead {
-  background-color: var(--myWhite);
-  color: var(--myBlack);
+  background-color: var(--darkGrey);
+  color: var(--myWhite);
   font-size: 1rem;
   border-top: 2px solid var(--darkGrey);
   border-bottom: 2px solid var(--darkGrey);
