@@ -29,8 +29,7 @@ td {
 th,
 td {
   padding: .25rem;
-  border: 2px solid red;
-  /* was --lightGrey */
+  border: 2px solid var(--lightGrey;
   width: 5.5rem;
 }
 
